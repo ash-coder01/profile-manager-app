@@ -40,7 +40,7 @@ export const ResumeComp = () => {
                             <img className="w-14 h-14" src={edu.collegeLogo}/>
                             <div className="px-4 w-full">
                                 <p className="font-semibold mb-2">{edu.collegeName}</p>
-                                <div className="flex justify-between mb-4">
+                                <div className="flex justify-between">
                                     <p className="text-base">{edu.location} || {edu.degree}, {edu.major}</p>
                                     <p className="text-base font-semibold">{edu.startDate} - {edu.endDate}</p>
                                 </div>
