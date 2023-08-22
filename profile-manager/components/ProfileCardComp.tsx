@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { technology } from "@/data/profile";
 
 export const ProfileCardComp = () => {
     const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
@@ -42,9 +43,13 @@ export const ProfileCardComp = () => {
                             </div>
                         </div>
                         <div className="flex w-full flex-wrap mt-10">
-                            {profile.skills.map((item: Object) => {
-                                return (<div className="text-gray-800 font-medium h-1/2 text-small text-center inline-flex items-center w-25 bg-gray-200 px-4 rounded-lg mr-5 mb-2 py-1 px-4">{item.name}</div>)
-                            })}
+                        {profile.skills.map((sk) => {
+                            return(
+                                <div className="text-gray-800 font-medium h-1/2 text-small text-center inline-flex items-center w-25 bg-gray-200 px-4 rounded-lg mr-5 mb-2 py-1 px-4">
+                                    {technology[sk].name}
+                                </div>
+                            )
+                        })}
                         </div>
                         <div className="flex mt-16 justify-between">
                             <div className="flex">
