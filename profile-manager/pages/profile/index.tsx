@@ -1,5 +1,5 @@
 import { NavBar } from "@/components/NavBar";
-import { ProfileSummaryComp } from "@/components/ProfileSummaryComp";
+import { ProfileDisplayComp } from "@/components/ProfileDisplayComp";
 
 export default function profileScreen() {
 
@@ -30,13 +30,13 @@ export default function profileScreen() {
     notificationCount: 4,
     stats: {visibility: false, xpPoints: 482, karmaPoints: 58},
     links: {
-      github: "",
-      linkedin: "",
-      facebook: "",
-      instagram: "",
-      dribbble: "",
-      behance: "",
-      visibility: true,
+      github: "https://nextjs.org/learn/basics/navigate-between-pages/link-component",
+      linkedin: "https://nextjs.org/learn/basics/navigate-between-pages/link-component",
+      facebook: "https://nextjs.org/learn/basics/navigate-between-pages/link-component",
+      instagram: "https://nextjs.org/learn/basics/navigate-between-pages/link-component",
+      dribbble: "https://nextjs.org/learn/basics/navigate-between-pages/link-component",
+      behance: "https://nextjs.org/learn/basics/navigate-between-pages/link-component",
+      youtube: "https://nextjs.org/learn/basics/navigate-between-pages/link-component",
     }
   };
 
@@ -50,9 +50,9 @@ export default function profileScreen() {
   // }
 
   return (
-    <main className="min-h-screen min-w-max items-center justify-center">
+    <main className="min-h-screen min-w-max items-center justify-center w-full">
       <NavBar/>
-      <ProfileSummaryComp/>
+      <ProfileDisplayComp/>
     </main>
   )
 }
