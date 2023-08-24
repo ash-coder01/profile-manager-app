@@ -3,6 +3,7 @@ import { ProfileDisplayComp } from "@/components/ProfileDisplayComp";
 import { useEffect, useState } from "react";
 import { profileType } from "@/data/typeP";
 import { tempuserProfile, userProfile } from "@/data/profile";
+import { FormComp } from "@/components/FormComp";
 
 export default function editScreen() {
   const [objwithArr, setObjwithArr] = useState({id: 0, skills: [0,1]});
@@ -15,12 +16,14 @@ export default function editScreen() {
   
   return (
     <main className="min-h-screen min-w-max items-center justify-center w-full">
-      <div>
+      {/* <div>
         object with array state: {objwithArr.skills[0]}
       </div>
       <div>
         profile state: {prof.projects.data.length}
-      </div>
+      </div> */}
+      <NavBar/>
+      <FormComp/>
     </main>
   )
 }
