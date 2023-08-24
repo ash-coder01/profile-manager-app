@@ -1,13 +1,22 @@
 import { technology } from "@/data/profile";
+import {useState, useEffect} from 'react'
+import { tempuserProfile } from "@/data/profile";
 
 export const ResumeComp = () => {
-    const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
+    // const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
+
+    const [prof, setProf] = useState(tempuserProfile);
+
+    useEffect(()=>{
+        setProf(JSON.parse(localStorage.getItem('userProfile') || '{}'));
+    },[])
+
     return(
         <div className="px-2">
             <div className="text-3xl font-bold">
                 <p className="mb-8">About me</p>
                 <div className="text-xl font-light border border-gray-150 bg-gray-50 rounded-lg w-full mb-10 p-4">
-                    <p className="text-lg font-semibold text-gray-900 mb-4">{profile.description}</p>
+                    <p className="text-lg font-semibold text-gray-900 mb-4">{prof.description}</p>
                     <button className="text-gray-900 font-semibold text-base bg-gray-200 px-4 py-2 rounded-lg">
                         Read more
                     </button>
@@ -15,7 +24,7 @@ export const ResumeComp = () => {
 
                 <p className="mb-8">Work experience</p>
                 <div className="mb-10">
-                {profile.workExperience.data.map((wexp) => {
+                {prof.workExperience.data.map((wexp) => {
                     return(
                         <div className="text-xl font-light border border-gray-150 bg-gray-50 rounded-lg w-full mb-2 p-4 flex">
                             <img className="w-14 h-14" src={wexp.companyLogo}/>
@@ -34,7 +43,7 @@ export const ResumeComp = () => {
 
                 <p className="mb-8">Education</p>
                 <div className="mb-10">
-                {profile.education.data.map((edu) => {
+                {prof.education.data.map((edu) => {
                     return(
                         <div className="text-xl font-light border border-gray-150 bg-gray-50 rounded-lg w-full mb-2 p-4 flex">
                             <img className="w-14 h-14" src={edu.collegeLogo}/>
@@ -52,7 +61,7 @@ export const ResumeComp = () => {
 
                 <p className="mb-8">Technical Skills</p>
                 <div className="mb-10 flex justify-between flex-wrap">
-                {profile.skills.map((sk) => {
+                {prof.skills.map((sk) => {
                     return(
                         <div className="text-lg h-12 font-light border border-gray-150 bg-gray-50 rounded-lg px-4 py-2 mb-2 flex content-center">
                             <img className="w-8 h-8 mr-4" src={technology[sk].url}/>
@@ -64,7 +73,7 @@ export const ResumeComp = () => {
 
                 <p className="mb-8">Interests</p>
                 <div className="mb-10 flex justify-between flex-wrap">
-                {profile.interests.data.map((i) => {
+                {prof.interests.data.map((i) => {
                     return(
                         <div className="text-lg h-12 font-light border border-gray-150 bg-gray-50 rounded-lg px-4 py-2 mb-2 flex content-center">
                             {/* <img className="w-8 h-8 mr-4" src={technology[sk].url}/> */}
@@ -76,7 +85,7 @@ export const ResumeComp = () => {
 
                 <p className="mb-8">Languages</p>
                 <div className="mb-10 flex flex-wrap">
-                {profile.languages.data.map((i) => {
+                {prof.languages.data.map((i) => {
                     return(
                         <div className="text-lg h-12 font-light border border-gray-150 bg-gray-50 rounded-lg px-4 py-2 mb-2 mr-4 flex content-center">
                             {/* <img className="w-8 h-8 mr-4" src={technology[sk].url}/> */}

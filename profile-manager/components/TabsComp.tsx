@@ -4,7 +4,6 @@ import { PortfolioComp } from "./PortofolioComp";
 import { ResumeComp } from "./ResumeComp";
 
 export const TabsComp = () => {
-    const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
     const [openTab, setOpenTab] = useState(0);
     const clickPortfolio = () => {
         setOpenTab(0);

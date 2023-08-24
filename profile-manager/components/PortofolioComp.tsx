@@ -1,7 +1,15 @@
 import { technology } from "@/data/profile";
+import { useState, useEffect } from 'react';
+import { tempuserProfile } from "@/data/profile";
 
 export const PortfolioComp = () => {
-    const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
+    // const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
+    const [prof, setProf] = useState(tempuserProfile);
+
+    useEffect(()=>{
+        setProf(JSON.parse(localStorage.getItem('userProfile') || '{}'));
+    },[])
+
     return(
         <div className="px-2">
         <div className="text-3xl font-bold">
@@ -14,7 +22,7 @@ export const PortfolioComp = () => {
                             </svg>
                         </div>
                         <div className="p-2">
-                            <p className="font-bold">{profile.streak}</p>
+                            <p className="font-bold">{prof.streak}</p>
                             <p className="text-lg font-semibold text-gray-600">Longest streak</p>
                         </div>
                 </div>
@@ -25,7 +33,7 @@ export const PortfolioComp = () => {
                         </svg>
                         </div>
                         <div className="p-2">
-                            <p className="font-bold">{profile.stats.xpPoints}</p>
+                            <p className="font-bold">{prof.stats.xpPoints}</p>
                             <p className="text-lg font-semibold text-gray-600">Experience points</p>
                         </div>
                 </div>
@@ -37,7 +45,7 @@ export const PortfolioComp = () => {
                         </div>
                         <div className="p-2">
                             <p className="font-bold">
-                                { (profile.stats.xpPoints) > 1000 ? "Expert" : (profile.stats.xpPoints) > 500 ? "Imtermediate" : "Novice"}
+                                { (prof.stats.xpPoints) > 1000 ? "Expert" : (prof.stats.xpPoints) > 500 ? "Imtermediate" : "Novice"}
                             </p>
                             <p className="text-lg font-semibold text-gray-600">Current league</p>
                         </div>
@@ -50,7 +58,7 @@ export const PortfolioComp = () => {
                         </div>
                         <div className="p-2">
                             <p className="font-bold">
-                                {profile.stats.karmaPoints}
+                                {prof.stats.karmaPoints}
                             </p>
                             <p className="text-lg font-semibold text-gray-600">Karma points</p>
                         </div>
@@ -59,7 +67,7 @@ export const PortfolioComp = () => {
 
             <p className="mb-4">Projects</p>
             <div className="flex flex-wrap justify-between mb-10">
-                {profile.projects.data.map((proj)=>{
+                {prof.projects.data.map((proj)=>{
                     return ( proj.visibility &&
                         <div className="text-xl font-light border border-gray-150 bg-gray-50 rounded-lg w-5/12 mb-4 p-4">
                             <img className="rounded-lg mb-4" src={proj.bhimage}/>
@@ -67,8 +75,8 @@ export const PortfolioComp = () => {
                             <div className="flex">
                                 {proj.techUsed.map( (item: Number) => {
                                     return (<div className="flex items-center flex-wrap">
-                                        <img className="h-4 mr-2" src={technology[item].url}/>
-                                        <p className="text-base font-semibold text-gray-600 mr-4">{technology[item].name}</p>
+                                        <img className="h-4 mr-2" src={technology[Number(item)].url}/>
+                                        <p className="text-base font-semibold text-gray-600 mr-4">{technology[Number(item)].name}</p>
                                         </div>)
                                 })}
                             </div>
@@ -79,7 +87,7 @@ export const PortfolioComp = () => {
 
             <p className="mb-4">Playgrounds</p>
             <div className="flex flex-wrap justify-between mb-10">
-                {profile.playgrounds.data.map((playg)=>{
+                {prof.playgrounds.data.map((playg)=>{
                     return ( playg.visibility &&
                         <div className="text-xl font-light border border-gray-150 bg-gray-50 rounded-lg w-5/12 mb-4 p-4">
                             <p className="font-bold mb-2">{playg.title}</p>
@@ -87,8 +95,8 @@ export const PortfolioComp = () => {
                                 <div className="flex">
                                     {playg.techUsed.map( (item: Number) => {
                                         return (<div className="flex items-center flex-wrap">
-                                            <img className="h-4 mr-2" src={technology[item].url}/>
-                                            <p className="text-base font-semibold text-gray-600 mr-4">{technology[item].name}</p>
+                                            <img className="h-4 mr-2" src={technology[Number(item)].url}/>
+                                            <p className="text-base font-semibold text-gray-600 mr-4">{technology[Number(item)].name}</p>
                                             </div>)
                                     })}
                                 </div>
@@ -99,12 +107,12 @@ export const PortfolioComp = () => {
 
             <p className="mb-4">Certificates</p>
             <div className="flex flex-wrap mb-10 justify-between">
-                {profile.certificates.data.map((certi)=>{
+                {prof.certificates.data.map((certi)=>{
                     return ( certi.visibility &&
                         <div className="text-xl font-light border border-gray-150 bg-gray-50 rounded-lg w-5/12 mb-4 p-4">
                             <img className="h-14 mr-2 mb-4" src={technology[certi.techUsed].url}/>
                             <p className="font-bold mb-2">{certi.title}</p>
-                            <p className="text-base mb-2">Issued on {certi.dateIssues}.</p>
+                            <p className="text-base mb-2">Issued on {certi.dateIssued}.</p>
                         </div>
                     )
                 })}

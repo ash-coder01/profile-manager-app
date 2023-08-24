@@ -1,37 +1,45 @@
 import Link from "next/link"
 import { technology } from "@/data/profile";
+import {useEffect, useState} from 'react'
+import { tempuserProfile } from "@/data/profile";
 
 export const ProfileCardComp = () => {
-    const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
+    const [prof, setProf] = useState(tempuserProfile);
+
+    useEffect(()=>{
+        setProf(JSON.parse(localStorage.getItem('userProfile') || '{}'));
+    },[])
+
+    // const profile = JSON.parse(localStorage.getItem('userProfile') || '{}')
     return(
         <div className=" rounded-lg border-gray-200 border mb-10">
                 <div className='h-64 rounded-t-lg w-full'>
                 <img
-                src={profile.backgroundImage}
+                src={prof.backgroundImage}
                 className="h-64 w-full rounded-t-lg"
                 alt="profile image" />
                 </div>
                 <div className='flex'>
                     <div className="w-1/4 relative">
                     <img
-                    src={profile.profileImage}
+                    src={prof.profileImage}
                     className="h-44 w-44 rounded-full object-cover right-0 absolute -translate-y-1/2 border-white border-2"
                     alt="profile image" />
                     </div>
                     <div className=" w-3/4 p-4">
                         <div className="flex w-9/12 justify-between items-center">
                             <div className="text-3xl font-bold">
-                                {profile.firstName} {profile.lastName}
+                                {prof.firstName} {prof.lastName}
                             </div>
                             <div className="text-gray-500 font-medium h-1/2 text-small text-center inline-flex items-center w-25 bg-yellow-300 px-4 rounded-lg">
                                 Pro
                             </div>
                             <div className="text-gray-500 font-medium h-1/2 text-small text-center inline-flex items-center w-25 bg-gray-300 px-4 rounded-lg">
-                                {profile.status}
+                                {prof.status}
                             </div>
                         </div>
                         <div className="text-gray-500 mt-2">
-                            {profile.about}
+                            {prof.about}
                         </div>
                         <div className="flex items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4 mr-2 text-gray-500">
@@ -39,11 +47,11 @@ export const ProfileCardComp = () => {
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                             </svg>
                             <div className="text-gray-500 ">
-                                {profile.location}
+                                {prof.location}
                             </div>
                         </div>
                         <div className="flex w-full flex-wrap mt-10">
-                        {profile.skills.map((sk) => {
+                        {prof.skills.map((sk) => {
                             return(
                                 <div className="text-gray-800 font-medium h-1/2 text-small text-center inline-flex items-center w-25 bg-gray-200 px-4 rounded-lg mr-5 mb-2 py-1 px-4">
                                     {technology[sk].name}
@@ -53,7 +61,7 @@ export const ProfileCardComp = () => {
                         </div>
                         <div className="flex mt-16 justify-between">
                             <div className="flex">
-                            {profile.links.github!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={profile.links.github}>
+                            {prof.links.github!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={prof.links.github}>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6"
@@ -64,7 +72,7 @@ export const ProfileCardComp = () => {
                             </svg>
                             </Link></div>}
                             
-                            {profile.links.facebook!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={profile.links.facebook}>
+                            {prof.links.facebook!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={prof.links.facebook}>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6 text-blue-700"
@@ -75,7 +83,7 @@ export const ProfileCardComp = () => {
                             </svg>
                             </Link></div>}
 
-                            {profile.links.youtube!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={profile.links.youtube}>
+                            {prof.links.youtube!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={prof.links.youtube}>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6 text-red-600"
@@ -86,7 +94,7 @@ export const ProfileCardComp = () => {
                             </svg>
                             </Link></div>}
 
-                            {profile.links.linkedin!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={profile.links.linkedin}>
+                            {prof.links.linkedin!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={prof.links.linkedin}>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6 text-blue-500"
@@ -97,7 +105,7 @@ export const ProfileCardComp = () => {
                             </svg>
                             </Link></div>}
 
-                            {profile.links.instagram!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={profile.links.instagram}>
+                            {prof.links.instagram!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={prof.links.instagram}>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6 text-pink-700"
@@ -108,7 +116,7 @@ export const ProfileCardComp = () => {
                             </svg>
                             </Link></div>}
 
-                            {profile.links.behance!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={profile.links.behance}>
+                            {prof.links.behance!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={prof.links.behance}>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6 text-blue-700"
@@ -119,7 +127,7 @@ export const ProfileCardComp = () => {
                             </svg>
                             </Link></div>}
 
-                            {profile.links.dribbble!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={profile.links.dribbble}>
+                            {prof.links.dribbble!=="" && <div className="rounded-lg border-gray-200 border mr-2 p-1"><Link href={prof.links.dribbble}>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6 text-pink-600"
