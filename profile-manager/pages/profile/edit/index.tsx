@@ -7,11 +7,11 @@ import { FormComp } from "@/components/FormComp";
 
 export default function editScreen() {
   const [objwithArr, setObjwithArr] = useState({id: 0, skills: [0,1]});
-  const [prof, setProf] = useState<profileType>(tempuserProfile);
+  // const [prof, setProf] = useState<profileType>(tempuserProfile);
 
   useEffect(()=>{
     setObjwithArr({id:1, skills: [1,2,3,4]});
-    setProf(JSON.parse(localStorage.getItem('userProfile') || '{}'));
+    // setProf(JSON.parse(localStorage.getItem('userProfile') || '{}'));
   },[])
   
   return (
