@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ProfileFormComp } from "./ProfileFormComp";
+import { SocialsFormComp } from "./SocialsFormComp";
 
 export const FormComp = () => {
     const [tabs, setTabs] = useState(0);
@@ -54,7 +55,7 @@ export const FormComp = () => {
                 </div>
                 <div className="py-4 px-8 w-5/6">
                     { (tabs === 0) && <ProfileFormComp/>}
-                    { (tabs === 1) && <div>Socials Tab</div>}
+                    { (tabs === 1) && <SocialsFormComp/>}
                     { (tabs === 2) && <div>Portfolio Tab</div>}
                     { (tabs === 3) && <div>Resume Tab</div>}
                 </div>

@@ -63,7 +63,7 @@ export const ProfileFormComp = () => {
         prof.profession = professionFinal;
         prof.dob = dobFinal;
         prof.gender = genderFinal;
-        console.log(countCheckboxFinal);
+        // console.log(countCheckboxFinal);
         // prof.count.visibility = countCheckboxFinal;
         // prof.stats.visibility = statsCheckboxFinal;
 

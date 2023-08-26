@@ -1,7 +1,14 @@
 import Link from 'next/link'
+import {useEffect} from 'react';
+import { userProfile } from '@/data/profile';
 
 
 export default function Home() {
+
+  useEffect(()=>{
+    localStorage.setItem("userProfile", JSON.stringify(userProfile));
+  },[])
+
   return (
     <main className="min-h-screen min-w-max flex items-center justify-center">
       <Link href="/profile">

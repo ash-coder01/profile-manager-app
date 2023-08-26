@@ -5,9 +5,9 @@ import { userProfile } from "@/data/profile";
 
 export default function profileScreen() {
 
-  useEffect(()=>{
-    localStorage.setItem("userProfile", JSON.stringify(userProfile));
-  },[])
+  // useEffect(()=>{
+  //   localStorage.setItem("userProfile", JSON.stringify(userProfile));
+  // },[])
 
   return (
     <main className="min-h-screen min-w-max items-center justify-center w-full">

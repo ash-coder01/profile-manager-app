@@ -140,7 +140,7 @@ export const ProfileCardComp = () => {
                             </Link></div>}
                             </div>
                             <div>
-                                <Link href="/profile/edit">
+                                <Link href="/profile/edit/profileform">
                                     <button className="text-gray-900 font-medium text-small h-8 mr-2 text-center inline-flex items-center w-25 bg-gray-200 px-4 rounded-lg">
                                     Edit profile
                                     </button>
